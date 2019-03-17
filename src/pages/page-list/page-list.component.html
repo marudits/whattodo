@@ -1,0 +1,55 @@
+<div el-container el-row gutter="20" class="page-list">
+  <div el-header class="page-list__header">
+    <h3>
+      <el-icon name="{{categoryInfo.icon || 'menu' }}"></el-icon>
+      {{ categoryName | titlecase }} Item(s)
+    </h3>
+    <el-button type="success" icon="plus" (click)="handleClick('dialog-add-item')">&nbsp;Add New Item</el-button>
+  </div>
+  <div el-main class="page-list__content">
+    <div el-row class="content-filter">
+      <div el-col [span]="8" class="content-filter__item" [class.active]="listState === 'all'" (click)="handleClick('filter-list', 'all')">
+        <p>All</p>
+      </div>
+      <div el-col [span]="8" class="content-filter__item" [class.active]="listState === 'uncompleted'" (click)="handleClick('filter-list', 'uncompleted')">
+        <el-badge [model]="listStateTotalInfo.uncompleted" class="item uncompleted">
+          <p>To be Done</p>
+        </el-badge>
+      </div>
+      <div el-col [span]="8" class="content-filter__item" [class.active]="listState === 'completed'" (click)="handleClick('filter-list', 'completed')">
+        <p>Completed</p>
+      </div>
+    </div>
+    <div class="content-list">
+      <app-todo-list [todoList]="filteredList"></app-todo-list>
+    </div>
+  </div>
+
+  <el-dialog [title]="dialog.title" [(visible)]="dialog.is_visible" width="80%">
+    <div *ngIf="dialog.type === 'add-item'">
+        <el-form [formGroup]="todoForm" class="form-todo">
+          <el-form-item class="form-todo__category">
+            <p>Category</p>
+            <el-select formControlName="category" placeholder="- Please select -">
+              <el-option *ngFor="let item of categoryList"
+                [label]="item.name"
+                [value]="item.key"
+                >
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="Title">
+            <el-input formControlName="title"></el-input>
+          </el-form-item>
+          <el-form-item label="Description">
+            <el-input type="textarea" formControlName="description"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button (click)="handleClick('reset-form')">Reset</el-button>
+            <el-button type="success" (click)="handleClick('confirm-add-item')" [elDisabled]="!todoForm.valid">Submit</el-button>
+          </el-form-item>
+        </el-form>
+    </div>
+  </el-dialog>
+</div>
+  

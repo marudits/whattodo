@@ -1,0 +1,30 @@
+<div class="comp-todolist">
+  <div *ngIf="todoList && todoList.length > 0">
+    <el-collapse [model]="activeItem" (modelChange)="handleClick('set-active-item', $event)" [accordion]="true" class="todo-list">
+      <el-collapse-item *ngFor="let item of todoList" label="{{item.title}}" value="{{item.id}}" class="todo-list__item">
+        <ng-template #label>
+          <div class="header" [ngClass]="item.is_done ? 'is_done' : ''">
+            <span class="item-action">
+              <el-icon name="circle-check" class="item-action__check" [class.active]="item.is_done" (click)="handleClick('toggle-is-done', item)"></el-icon>
+            </span>
+            
+            <span class="item-title">{{ item.title }}</span>
+  
+            <span class="item-action">
+              <el-icon name="circle-close" class="item-action__close" (click)="handleClick('item-removed', item)"></el-icon>
+            </span>
+          </div>
+        </ng-template>
+        <div class="content">
+          <p class="description">{{ item.description }}</p>
+          <p class="created">
+            {{ item.category }} &middot; Created at {{ item.created_at | date }}
+          </p>
+        </div>
+      </el-collapse-item>
+    </el-collapse>
+  </div>
+  <div *ngIf="!todoList || todoList.length <= 0">
+    <p>No Items</p>   
+  </div>
+</div>  

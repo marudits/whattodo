@@ -1,0 +1,55 @@
+@import "../../assets/styles/variable.scss";
+
+.comp-todolist {
+    .todo-list {
+        &__item {
+            .header {
+                font-size: 1.2rem;
+
+                &.is_done {
+                    .item-title {
+                        text-decoration: line-through;
+                        color: $state-info;
+                    }
+                }
+            }
+
+            .content {
+                .description {
+                    font-size: 1rem;
+                }
+
+                .created {
+                    font-style: italic;
+                }
+            }            
+
+            .item-action {
+                cursor: pointer;
+                
+                &__check {
+                    color: $state-info;
+                    margin-right: 0.5rem;
+
+                    &:hover {
+                        color: $state-success;
+                    }
+
+                    &.active {
+                        color: $state-success;
+                    }
+                }
+
+                &__close {
+                    color: $state-info;
+                    float: right;
+                    
+                    &:hover {
+                        color: $state-danger;
+                    }
+                }
+
+            }
+        }
+    }
+}

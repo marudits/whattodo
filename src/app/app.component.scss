@@ -1,0 +1,15 @@
+@import "../assets/styles/variable.scss";
+
+.header {
+    color: $teal;
+    background-color: $teal-lighten-2;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}
+
+.content {
+    min-height: 90vh;
+    margin-bottom: 6em;
+    margin-top: 60px;
+}

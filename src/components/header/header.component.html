@@ -1,0 +1,14 @@
+<div el-header class="header">
+  <div *ngIf="!currentUser" class="text-center padding-top-no">
+    <h1>WhatToDo</h1>
+  </div>
+  <div *ngIf="currentUser">
+    <span (click)="handleClick('navigate-to', '/')" class="header-title">WhatToDo</span>
+    <span class="header-action">
+      <el-tooltip placement="bottom-end">
+        <ng-template #tip>Logout</ng-template>
+        <el-icon name="remove" type="danger" (click)="handleClick('sign-out')"></el-icon>
+      </el-tooltip>
+    </span>
+  </div>
+</div>

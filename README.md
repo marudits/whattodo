@@ -1,27 +1,41 @@
 # Whattodo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
+Whattodo is an simple application manage your tasks and to-do list easily and convenient.
 
-## Development server
+### Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This app needs to be run on **Node.js** environment. Please make sure you have `node` and `npm` installed on your machine, or you can download and install by following instructions [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). It is recommended to install or update to latest version.
 
-## Code scaffolding
+You can check `node` and `npm` on your machine using these commands
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```sh
+$ node -v
+$ npm -v
+```
 
-## Build
+### Getting started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+You can run this application by execute *bash* files on `./bin` folder
 
-## Running unit tests
+Setup project
+```sh
+$ ./bin/setup
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Build project (optional)
+```sh
+$ ./bin/setup
+```
 
-## Running end-to-end tests
+Run application
+```sh
+$ ./bin/(start|start_pm2)
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Open your browser at [http://localhost:4200](http://localhost:4200).
 
-## Further help
+### License
+No-Licensed
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Developed by
+[**marudits**](mailto:marudits@gmail.com)
