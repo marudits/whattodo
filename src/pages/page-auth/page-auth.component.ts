@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
+// library
+import { ElMessageService } from 'element-angular';
+
+// services
+import { FirebaseService } from '../../services/firebase/firebase.service';
+
 // shared
 import { CONSTANTS } from '../../shared/constants';
 
@@ -18,10 +24,20 @@ export class PageAuthComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private firebaseService: FirebaseService,
+    private message: ElMessageService,
     private router: Router
   ) { }
 
   ngOnInit() {
+    // check user is signed in
+    this.firebaseService.getCurrentUser()
+      .subscribe(user => {
+        if(user){
+          this.router.navigate(['/'])
+        }
+      });
+
     // set form
     this.authForm = this.formBuilder.group({
       email: [
@@ -57,7 +73,25 @@ export class PageAuthComponent implements OnInit {
     switch(type){
       case 'submit':
         if(this.isValid('email') && this.isValid('password')){
-          this.router.navigate(['/']);
+          if(this.formMode === CONSTANTS.AUTH.MODE.SIGN_IN){
+            this.firebaseService.signIn(this.authForm.value.email, this.authForm.value.password)
+              .then(res => {
+                this.router.navigate(['/']);
+              })
+              .catch(err => {
+                console.error('Failed on sign in: ', err);
+                this.message.error(err.message || 'Failed on sign in');
+              })
+          } else if(this.formMode === CONSTANTS.AUTH.MODE.SIGN_UP){
+            this.firebaseService.signUp(this.authForm.value.email, this.authForm.value.password)
+              .then(res => {
+                this.router.navigate(['/']);
+              })
+              .catch(err => {
+                console.error('Failed on sign up: ', err);
+                this.message.error(err.message || 'Failed on sign up');
+              })
+          }
         }
         break;
       case 'reset':
@@ -70,7 +104,7 @@ export class PageAuthComponent implements OnInit {
     this.formMode = this.formMode === CONSTANTS.AUTH.MODE.SIGN_IN ? CONSTANTS.AUTH.MODE.SIGN_UP : CONSTANTS.AUTH.MODE.SIGN_IN;
   }
 
-  validateForm(type, form){
+  validateForm(type: string, form: any){
     switch(type){
       case 'email':
         const mailReg: RegExp = CONSTANTS.FORM.EMAIL.FORMAT;

@@ -7,8 +7,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 
+// environments
+import { environment } from '../environments/environment';
+
 // libraries
 import { ElModule } from 'element-angular/release/element-angular.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 
 // modules
 import { AppRoutingModule } from '../modules/app-routing/app-routing.module';
@@ -18,7 +23,9 @@ import { AppRoutingModule } from '../modules/app-routing/app-routing.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ElModule.forRoot()
+    ElModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase, 'hcl-whattodo'),
+    AngularFireAuthModule
   ],
   declarations: [
     AppComponent,

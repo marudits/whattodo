@@ -3,4 +3,20 @@
 .header {
     padding-left: 10px;
     padding-right: 10px;
+
+    &-title {
+        float: left;
+        cursor: pointer;
+        font-size: 2rem;
+        font-weight: bolder;
+        padding-top: 10px;
+    }
+
+    &-action {
+        float: right;
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+        padding-top: 10px;
+    }
 }
