@@ -1,0 +1,21 @@
+.page-dashboard {
+    &__content {
+        .content-category {
+            margin-top: 1rem;
+        
+            &__item {
+                margin-bottom: 1rem;
+                cursor: pointer;
+        
+                &.all {
+                    .item {
+                        &-icon {
+                            font-size: 6em;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

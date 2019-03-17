@@ -1,3 +1,24 @@
-<p>
-  page-dashboard works!
-</p>
+<div el-container el-row gutter="20" class="page-dashboard">
+  <div el-header class="page-dashboard__header">
+    <h3>
+      Welcome, {{ currentUser.displayName }}
+    </h3>
+    <p>{{ currentTime | date }}</p>
+  </div>
+  <div el-main class="page-dashboard__content">
+    <div el-row gutter="12" class="content-category">
+      <div el-col [span]="6" :xs="12" class="content-category__item all" (click)="handleClick('navigate-to', 'list' )">
+        <app-todo-category [name]="'All'" [icon]="'menu'" [numOfTasks]="totalOfTasks" [numOfCompletedTasks]="totalOfCompletedTasks" class="hidden-xs-only">
+        </app-todo-category>
+        <div class="hidden-sm-and-up item-icon">
+          <el-icon name="menu"></el-icon>
+        </div>
+      </div>
+      <div el-col [span]="6" :xs="12" class="content-category__item"
+        *ngFor="let item of categorySummary" (click)="handleClick('navigate-to', 'list', { type: item.key } )">
+        <app-todo-category [name]="item.name" [icon]="item.icon" [numOfTasks]="item.numOfTasks" [numOfCompletedTasks]="item.numOfCompletedTasks">
+        </app-todo-category>
+      </div>
+    </div>
+  </div>
+</div>

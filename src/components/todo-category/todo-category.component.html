@@ -1,0 +1,15 @@
+<el-card class="box-card">
+  <ng-template #header>
+    <el-icon name="{{icon}}"></el-icon>&nbsp;{{ name }}
+  </ng-template>
+  <div *ngIf="numOfTasks">
+    {{ numOfTasks }} Item(s)
+  </div>
+  <div *ngIf="!numOfTasks">
+    No Item
+  </div>
+  <div *ngIf="numOfTasks" class="progress">
+    <el-progress class="progress-status" [percentage]="(numOfCompletedTasks / numOfTasks) * 100 | number:'1.0-0'"></el-progress>
+  </div>
+</el-card>
+  
