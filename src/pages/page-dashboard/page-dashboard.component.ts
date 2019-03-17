@@ -37,6 +37,8 @@ export class PageDashboardComponent implements OnInit {
           this.currentUser = Object.assign({}, user, { displayName: getUsernameByEmail(user.email) });
 
           this.loadCategorySummary();
+        } else {
+          this.router.navigate(['auth']);
         }
       })
   }

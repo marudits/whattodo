@@ -6,11 +6,12 @@
             &__item {
                 margin-bottom: 1rem;
                 cursor: pointer;
+                min-height: 100px;
         
                 &.all {
                     .item {
                         &-icon {
-                            font-size: 6em;
+                            font-size: 7em;
                             text-align: center;
                         }
                     }
