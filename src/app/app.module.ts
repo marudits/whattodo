@@ -13,7 +13,8 @@ import { environment } from '../environments/environment';
 // libraries
 import { ElModule } from 'element-angular/release/element-angular.module';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 // modules
 import { AppRoutingModule } from '../modules/app-routing/app-routing.module';
@@ -25,7 +26,8 @@ import { AppRoutingModule } from '../modules/app-routing/app-routing.module';
     AppRoutingModule,
     ElModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'hcl-whattodo'),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   declarations: [
     AppComponent,

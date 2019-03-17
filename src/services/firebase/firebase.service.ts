@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 
 // libraries
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+
+// shared
+import { CONSTANTS } from '../../shared/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +14,22 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class FirebaseService {
 
   constructor(
-    private angularFireAuth: AngularFireAuth
+    private angularFireAuth: AngularFireAuth,
+    private angularFireStore: AngularFirestore
   ) { }
 
   getCurrentUser(){
     return this.angularFireAuth.authState;
+  }
+
+  getTodo(){
+    const accountId = this.isAuthenticated().uid;
+    
+    return this.angularFireStore.collection(CONSTANTS.DATABASE.COLLECTIONS.TODOLIST, ref => ref.where('created_by', '==', accountId))
+      .snapshotChanges()
+      .pipe(
+        map(actions => actions.map(item => Object.assign({}, { id: item.payload.doc.id }, item.payload.doc.data() )))
+      );
   }
 
   isAuthenticated(){
