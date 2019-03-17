@@ -1,0 +1,59 @@
+@import "../../assets/styles/variable.scss";
+
+.page-auth {
+    &__info {
+        color: $teal-darken-3;
+
+        .icon {
+            &-big {
+                margin: 5rem 0px 2rem 0px;
+                font-size: 5rem;
+
+                &__icon {
+                    color: $teal;
+                    background-color: $teal-lighten-2;
+                    border-radius: 50%;
+                    width: 7rem;
+                    height: 7rem;
+                    text-align: center;
+                    border: 0.1em solid transparent;
+
+                    &:hover {
+                        border: 0.1em solid $teal;
+                        background-color: white;
+                    }
+                }
+            }
+
+            &-small {
+                font-size: 2rem;
+                
+                &__icon {
+                    color: $teal;
+
+                    &:hover {
+                        color: $teal-darken-3;
+                        font-size: 2.5rem;
+                    }
+                }
+            }
+        }
+    }
+    &__form {
+        .form {
+            &-header {
+                text-align: center;
+                color: $teal-darken-3;
+            }
+            &-content {
+                p {
+                    a {
+                        cursor: pointer;
+                        text-decoration: underline;
+                        color: $state-primary;
+                    }
+                }
+            }
+        }
+    }
+}
