@@ -1,15 +1,17 @@
-<el-card class="box-card">
-  <ng-template #header>
+<el-card class="box-card todo-category">
+  <ng-template #header class="todo-category__header">
     <el-icon name="{{icon}}"></el-icon>&nbsp;{{ name }}
   </ng-template>
-  <div *ngIf="numOfTasks">
-    {{ numOfTasks }} Item(s)
-  </div>
-  <div *ngIf="!numOfTasks">
-    No Item
-  </div>
-  <div *ngIf="numOfTasks" class="progress">
-    <el-progress class="progress-status" [percentage]="(numOfCompletedTasks / numOfTasks) * 100 | number:'1.0-0'"></el-progress>
+  <div class="todo-category__content">
+    <div *ngIf="numOfTasks">
+      {{ numOfTasks }} Item(s)
+    </div>
+    <div *ngIf="!numOfTasks">
+      No Item
+    </div>
+    <div *ngIf="numOfTasks" class="progress">
+      <el-progress class="progress-status" [percentage]="(numOfCompletedTasks / numOfTasks) * 100 | number:'1.0-0'"></el-progress>
+    </div>
   </div>
 </el-card>
   

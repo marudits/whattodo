@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
+// component
+import { TodoListComponent } from '../../components/todo-list/todo-list.component';
+
+// modules
+import { SharedModule } from '../shared/shared.module';
+
 // pages
 import { PageListComponent } from '../../pages/page-list/page-list.component';
 
@@ -16,10 +22,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
-    PageListComponent
+    PageListComponent,
+    TodoListComponent
   ],
   exports: [
     RouterModule
