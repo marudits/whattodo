@@ -1,0 +1,18 @@
+@import "../../assets/styles/variable.scss";
+
+.footer {
+    color: $teal-lighten-2;
+    background-color: $teal-darken-1;
+    border-top: 0.5rem solid $teal;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+
+    a {
+        color: $teal-lighten-2;
+        &:hover {
+            color: white;
+        }
+    }
+}
